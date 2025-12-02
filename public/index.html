@@ -1,0 +1,240 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Projeto Noriyan — Fundo do Mar: informações, curiosidades e ciência sobre as zonas do oceano." />
+  <title>Zonas do Oceano — Noriyan</title>
+
+  <link rel="stylesheet" href="style.css">
+  
+<script defer src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.8.0/dist/tf.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/face-api.js@0.22.2/dist/face-api.min.js"></script>
+
+</head>
+<body>
+  <!--
+    TODO: Atualize o conteúdo do header com logo real e links do repositório.
+  -->
+
+  <header>
+    <div class="container topbar" role="banner">
+      <div class="brand" aria-hidden="false">
+        <div class="logo" aria-hidden="true">N</div>
+        <div>
+          <div><strong>Noriyan</strong> — Zonas do Oceano</div>
+          <div class="team" aria-label="Integrantes">Breno Gabriel Sousa de Siqueira · Yuri Oliveira · Brayan Amorim dos Santos Brenda · Amorim dos Santos</div>
+        </div>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:.6rem;">
+        <nav aria-label="Navegação principal">
+          <a href="#curiosidades">Curiosidades</a>
+          <a href="#fatos">Fatos</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+
+        <button id="themeToggle" class="btn secondary" aria-pressed="false" aria-label="Alternar modo claro e escuro">Modo</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-label="Seção principal — hero">
+      <div class="hero-text" role="region" aria-labelledby="titulo-principal">
+        <h1 id="titulo-principal">Zonas do Oceano</h1>
+        <div class="slogan">“Das águas claras às sombras profundas, a vida resiste.”</div>
+        <p class="summary">O site traz informações sobre as zonas do oceano — curiosidades, fatos científicos e imagens para entender como a vida se organiza do brilho da superfície às fossas hadal.</p>
+
+        <div class="hero-actions" role="group" aria-label="Ações principais">
+          <button id="abrirIA" class="btn" aria-label="Iniciar reconhecimento facial">Reconhecimento Facial</button>
+          <button id="btnAbrirChatbot" class="btn secondary" aria-label="Abrir chatbot">Abrir Chatbot</button>
+        </div>
+
+        <div style="margin-top:.9rem;color:var(--muted);font-size:.9rem;">Navegue pelas seções para aprender — ou use o chatbot demonstrativo.</div>
+      </div>
+
+      <div class="hero-media" aria-hidden="false">
+        <!-- IMAGEM HERO -->
+        <!-- TODO: substituir a url pela imagem preferida do projeto -->
+        <img src="https://s3.static.brasilescola.uol.com.br/be/2025/05/zonas-profundeza-oceanos.jpg"
+             alt="Ilustração das zonas do oceano mostrando profundidades e camadas de luz"
+             loading="lazy" />
+
+        <small style="color:var(--muted);">Imagem ilustrativa das zonas oceânicas — Noriyan.</small>
+      </div>
+    </section>
+
+    <!-- Curiosidades -->
+    <section id="curiosidades" aria-labelledby="title-curiosidades">
+      <h2 id="title-curiosidades">Curiosidades</h2>
+      <div class="curiosidades" role="list" aria-label="Lista de curiosidades">
+        <article class="curio" role="listitem">
+          <p>A água do mar cobre 71% da Terra.</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <p>A lula-colossal tem olhos do tamanho de bolas de futebol.</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <p>A luz solar só alcança até cerca de 200 metros de profundidade.</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <p>Peixes das profundezas produzem sua própria luz (bioluminescência).</p>
+        </article>
+
+        <article class="curio" role="listitem">
+          <p>Menos de 5% do oceano foi explorado pelo ser humano.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Fatos e Ciência -->
+    <section id="fatos" aria-labelledby="title-fatos">
+      <h2 id="title-fatos">Fatos e Ciência</h2>
+      <div class="fatos" role="list">
+        <article class="card" role="listitem" aria-labelledby="f1">
+          <h3 id="f1">Zonas Oceânicas</h3>
+          <p>O oceano é dividido em cinco zonas principais — epipelágica, mesopelágica, batial, abissal e hadal — conforme profundidade e luz disponível.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="f2">
+          <h3 id="f2">Penetração da Luz</h3>
+          <p>Apenas a zona epipelágica recebe luz suficiente para fotossíntese, permitindo o crescimento do fitoplâncton que sustenta cadeias alimentares.</p>
+        </article>
+
+        <article class="card" role="listitem" aria-labelledby="f3">
+          <h3 id="f3">Pressão Extrema</h3>
+          <p>A pressão aumenta ~1 atmosfera a cada 10 metros; nas zonas profundas a pressão pode ser >1000x da superfície — exigindo adaptações especiais.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- Galeria -->
+    <section id="galeria" aria-labelledby="title-galeria">
+      <h2 id="title-galeria">Galeria</h2>
+      <div class="gallery" role="list" aria-label="Galeria de imagens do fundo do mar">
+        <figure role="listitem">
+          <img src="https://s3.sa-east-1.amazonaws.com/optima-intercambio/artigos/1116302021052460abb53e71677.jpg" alt="Coral saudável no oceano Pacífico" loading="lazy" />
+          <figcaption>Coral saudável no oceano Pacífico</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://hypescience.com/wp-content/uploads/2016/02/barulho-oceano-profundo.jpg" alt="Acústica e sons no oceano profundo" loading="lazy" />
+          <figcaption>Acústica do oceano profundo</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://dicionariodopetroleo.com.br/wp-content/uploads/2023/01/O-que-e-a-zona-abissal-1024x666.jpg" alt="Zona abissal com criatura adaptada à escuridão" loading="lazy" />
+          <figcaption>Zona abissal — pouca luz e temperaturas próximas de 0°C</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://services.meteored.com/img/article/la-zona-hadal-un-mundo-de-oscuridad-frio-y-presion-1703441730406_1280.jpeg" alt="Zona hadal — fossas oceânicas profundas" loading="lazy" />
+          <figcaption>Zona hadal — fossas oceânicas profundas</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://static.wixstatic.com/media/c4e423_a9a61a298fbb4c5dba8b0e8303523ee6~mv2.jpg/v1/fill/w_640,h_498,al_c,q_80,usm_0.66_1.00_0.01,enc_avif,quality_auto/c4e423_a9a61a298fbb4c5dba8b0e8303523ee6~mv2.jpg" alt="Fauna marinha bioluminescente" loading="lazy" />
+          <figcaption>Fauna bioluminescente</figcaption>
+        </figure>
+
+        <figure role="listitem">
+          <img src="https://econceitos.wordpress.com/wp-content/uploads/2013/07/zonas.png" alt="Mapa esquemático das zonas do oceano" loading="lazy" />
+          <figcaption>Mapa esquemático das zonas do oceano</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="faq" aria-labelledby="title-faq">
+      <h2 id="title-faq">Perguntas Frequentes (FAQ)</h2>
+
+      <details>
+        <summary>Quantas zonas o oceano possui?</summary>
+        <p>Cinco — epipelágica, mesopelágica, batial, abissal e hadal.</p>
+      </details>
+
+      <details>
+        <summary>Qual é a zona mais iluminada do oceano?</summary>
+        <p>A zona epipelágica é a mais iluminada, onde ocorre a maior parte da fotossíntese marinha.</p>
+      </details>
+
+      <details>
+        <summary>Existe vida nas partes mais profundas do oceano?</summary>
+        <p>Sim — há organismos adaptados à escuridão, pressão e frio, muitos com bioluminescência.</p>
+      </details>
+
+      <details>
+        <summary>O que é bioluminescência?</summary>
+        <p>Capacidade de alguns seres produzirem luz por reações químicas internas — útil para caça, defesa e comunicação.</p>
+      </details>
+
+      <details>
+        <summary>Por que explorar o fundo do oceano é difícil?</summary>
+        <p>Devido à pressão extrema, ausência de luz e condições logísticas complexas para equipamentos e mergulho.</p>
+      </details>
+    </section>
+
+    <!-- CTA -->
+    <section class="cta" aria-label="Chamada para ação">
+      <div>
+        <strong>Quer se aprofundar?</strong>
+        <div style="color:var(--muted);font-size:.95rem;">Baixe o material didático ou explore a galeria.</div>
+      </div>
+      <div>
+        <a href="#fatos" class="btn" style="text-decoration:none;">Aprenda mais</a>
+        <!-- TODO: substituir por link de download real -->
+      </div>
+    </section>
+
+    <!-- Créditos / Fontes -->
+    <aside aria-label="Créditos e fontes">
+      <h3>Créditos / Fontes</h3>
+      <ul>
+        <li><a class="link" href="https://brasilescola.uol.com.br" target="_blank" rel="noopener">Brasilescola — Zonas de Profundidade</a></li>
+        <li><a class="link" href="https://hypescience.com" target="_blank" rel="noopener">HypeScience — Artigos sobre oceano profundo</a></li>
+        <li>Imagens — Unsplash / Pexels / Bancos públicos e links fornecidos pela equipe</li>
+        <li>Projeto: Noriyan — Breno G. S. de Siqueira, Yuri Oliveira, Brayan Amorim dos Santos</li>
+      </ul>
+    </aside>
+  </main>
+
+  <!-- Chatbot aside (inicialmente oculto) -->
+    <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
+    <df-messenger
+      intent="WELCOME"
+      chat-title="Chatbot-IA"
+      agent-id="7e9ea28d-fc2a-4f18-a435-1d31267d9a34"
+      language-code="pt-br">
+    </df-messenger>
+
+  <footer role="contentinfo">
+    <div class="container">
+      <div id="footerText">© <span id="year"></span> Noriyan. <a href="#top" class="link">Voltar ao topo</a></div>
+    </div>
+  </footer>
+
+   <!-- MODAL DE RECONHECIMENTO FACIAL -->
+<div id="cameraModal" class="modal-camera" aria-hidden="true">
+  <div class="modal-camera-content">
+    <button id="fecharModal" class="modal-camera-close" title="Fechar">❌</button>
+    <h2 class="modal-camera-title">Reconhecimento Facial</h2>
+    <div class="modal-video-wrap">
+      <video id="video" autoplay muted playsinline></video>
+    </div>
+    <div class="modal-camera-controls">
+      <button id="tirarFoto" class="modal-camera-btn" title="Tirar foto">📸 Tirar Foto</button>
+    </div>
+    <p id="modalStatus" class="modal-camera-status">Aguardando...</p>
+    <canvas id="fotoCanvas" style="display:none;"></canvas>
+  </div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
