@@ -6,34 +6,40 @@
   <title>Resultado - Exploração do Oceano</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    /* ===========================
-       ESTILO MODERNO (baseado no tema principal)
-       =========================== */
-    :root{
-  /* Fundo oceânico – epipelágica → hadal */
+/* ===========================
+   ESTILO MODERNO — versão refinada
+   alinhada com o tema oceânico principal
+   =========================== */
+
+:root{
+  /* Fundo oceânico suave (modo claro) */
   --bg: linear-gradient(
     180deg,
-    #b9ecff 0%,     /* superfície */
+    #b9ecff 0%,     /* superfície clara */
     #75c8ff 20%,
     #2e8bcb 45%,
     #1b4e73 70%,
     #0d2b45 85%,
-    #081a2b 100%
+    #081a2b 100%    /* zona abissal */
   );
 
-  --card: rgba(255,255,255,0.85);
-  --text: #022b3a;
-  --muted: #3c6173;
+  /* Elementos */
+  --card: rgba(255,255,255,0.92);
+  --text: #0b2c3d;
+  --muted: #2f5568;
 
-  --accent: #00a6fb;
-  --accent-2: #0081c9;
+  /* Acentos (mais vivos, mais “digital ocean vibes”) */
+  --accent: #0099f0;
+  --accent-2: #0075c4;
 
-  --glass: rgba(255,255,255,0.55);
-  --shadow: 0 6px 18px rgba(8,35,56,0.18);
+  /* Glassmorphism */
+  --glass: rgba(255,255,255,0.65);
+  --shadow: 0 6px 18px rgba(8,35,56,0.16);
   --radius: 14px;
 }
 
 .dark{
+  /* Gradiente profundo pra vibe hadal noturna */
   --bg: linear-gradient(
     180deg,
     #062037 0%,
@@ -53,84 +59,110 @@
   --glass: rgba(0,20,35,0.5);
   --shadow: 0 10px 30px rgba(0,0,0,0.55);
 }
-    html, body {
-      height: 100%;
-      margin: 0;
-      font-family: "Inter", Arial, sans-serif;
-      background: var(--bg);
-      background-attachment: fixed;
-      color: var(--text);
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 40px 20px;
-    }
 
-    h1 {
-      font-size: 1.9rem;
-      margin-bottom: 8px;
-    }
+/* ===========================
+   BASE GLOBAL
+   =========================== */
 
-    h2 {
-      font-size: 1.6rem;
-      color: var(--accent);
-      margin-top: 0;
-    }
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background: var(--bg);
+  background-attachment: fixed;
+  color: var(--text);
+  text-align: center;
 
-    p {
-      font-size: 1.1rem;
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
-    .card {
-      display: inline-block;
-      background: var(--card);
-      padding: 20px;
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      max-width: 420px;
-      transition: transform 0.25s ease;
-    }
+  padding: 40px 20px;
+  transition: background .4s ease, color .3s ease;
+}
 
-    .card:hover {
-      transform: translateY(-4px);
-    }
+/* ===========================
+   TIPOGRAFIA
+   =========================== */
 
-    .card img {
-      width: 100%;
-      max-width: 360px;
-      border-radius: 12px;
-      display: block;
-      margin: 0 auto 20px auto;
-      box-shadow: var(--shadow);
-    }
+h1 {
+  font-size: 1.9rem;
+  margin-bottom: 8px;
+}
 
-    button {
-      padding: 12px 24px;
-      background: linear-gradient(90deg, var(--accent), var(--accent-2));
-      border: none;
-      border-radius: 10px;
-      color: white;
-      font-weight: 700;
-      cursor: pointer;
-      font-size: 1rem;
-      box-shadow: var(--shadow);
-      transition: transform .15s ease, opacity .2s ease, background .3s ease;
-    }
+h2 {
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-top: 0;
+}
 
-    button:hover {
-      opacity: 0.9;
-      transform: translateY(-2px);
-    }
+p {
+  font-size: 1.1rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
 
-    @media (max-width: 600px){
-      .card img { max-width: 100%; }
-      h1 { font-size: 1.6rem; }
-      h2 { font-size: 1.3rem; }
-    }
+/* ===========================
+   CARD
+   =========================== */
+
+.card {
+  display: inline-block;
+  background: var(--card);
+  padding: 20px;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  max-width: 420px;
+  transition: transform 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+}
+
+.card img {
+  width: 100%;
+  max-width: 360px;
+  border-radius: 12px;
+  display: block;
+  margin: 0 auto 20px auto;
+  box-shadow: var(--shadow);
+}
+
+/* ===========================
+   BOTÃO
+   =========================== */
+
+button {
+  padding: 12px 24px;
+  background: linear-gradient(90deg, var(--accent), var(--accent-2));
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  font-size: 1rem;
+  box-shadow: var(--shadow);
+
+  transition: transform .15s ease, opacity .2s ease, background .3s ease;
+}
+
+button:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+/* ===========================
+   RESPONSIVIDADE
+   =========================== */
+
+@media (max-width: 600px){
+  .card img { max-width: 100%; }
+  h1 { font-size: 1.6rem; }
+  h2 { font-size: 1.3rem; }
+}
+
   </style>
 </head>
 <body>
